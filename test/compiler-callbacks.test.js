@@ -47,4 +47,19 @@ describe('CompilerCallbacks', () => {
       logLevel: 'silent',
     });
   });
+
+  it('options.handler should be called on watch run', (done) => {
+    const mockStats = { test: true };
+    jest.spyOn(compiler, 'watch').mockImplementation((opts, callback) => {
+      callback(null, mockStats);
+    });
+
+    middleware(compiler, {
+      handler: (err, stats) => {
+        expect(err).toBe(null);
+        expect(stats).toEqual(mockStats);
+        done();
+      },
+    });
+  });
 });
