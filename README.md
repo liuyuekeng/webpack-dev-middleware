@@ -248,6 +248,13 @@ Set the default file system which will be used by webpack as primary destination
 fs.join = path.join; // no need to bind
 ```
 
+### handler
+
+Type: `Function`
+Default: `undefined`
+
+This function is a callback function that is invoked while each watch run finished, with err as first argument, compile stats as second argument
+
 ## API
 
 `webpack-dev-middleware` also provides convenience methods that can be use to
